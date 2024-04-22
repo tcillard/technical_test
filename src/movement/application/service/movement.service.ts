@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { Balance, Movement, Reason } from "src/movementValidator/domain/models/validation.model";
-import { MovementServiceInterface } from "src/movementValidator/domain/service/movement.service.Interface";
+import { Balance, Movement, Reason } from "src/movement/domain/models/validation.model";
+import { MovementServiceInterface } from "src/movement/domain/service/movement.service.Interface";
 
 @Injectable()
 export class MovementServiceImpl implements MovementServiceInterface {

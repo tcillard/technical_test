@@ -1,4 +1,4 @@
-import { Balance, Movement } from "src/movementValidator/domain/models/validation.model";
+import { Balance, Movement } from "src/movement/domain/models/validation.model";
 
 export class ValidationDto {
     movements: Array<Movement>

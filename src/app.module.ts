@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { AppService } from './app.service'
-import { MovementModule } from './movementValidator/movementValidator.module'
+import { MovementModule } from './movement/movement.module'
 
 export const AppServiceToken  = "AppServiceToken"
 
