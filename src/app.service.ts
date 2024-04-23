@@ -1,8 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common'
-import 'dotenv/config'
+import { Injectable, OnModuleInit } from '@nestjs/common'
 
 @Injectable()
-export class AppService {
-  private readonly logger = new Logger(AppService.name)
-
-}
+export class AppService {}
