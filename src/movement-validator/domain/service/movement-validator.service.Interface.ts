@@ -1,7 +1,7 @@
 import { Balance, Movement, Reason } from "../models/movement-validation.model";
 
-export interface MovementServiceInterface {
+export interface MovementValidatorServiceInterface {
     validate(movements: Array<Movement>, balances: Array<Balance>): Array<Reason>
 }
 
-export const MovementServiceToken  = "MovementServiceToken"
+export const MovementValidatorServiceToken  = "MovementValidatorServiceToken"

@@ -1,5 +1,5 @@
 import { Body, Controller, Inject, Post, Res } from "@nestjs/common"
-import { MovementServiceInterface, MovementServiceToken } from "src/movement-validator/domain/service/movement-validator.service.Interface"
+import { MovementValidatorServiceInterface, MovementValidatorServiceToken } from "src/movement-validator/domain/service/movement-validator.service.Interface"
 import { ValidationDto, ValidationError, ValidationSuccess } from "src/movement-validator/adapter/controller/movement-validation.dto"
 import { Response } from 'express'
 import { Reason } from "src/movement-validator/domain/models/movement-validation.model"
@@ -8,12 +8,17 @@ import { Reason } from "src/movement-validator/domain/models/movement-validation
 
 export class MovementController {
     constructor(
-        @Inject(MovementServiceToken)
-        private movementService: MovementServiceInterface
+        @Inject(MovementValidatorServiceToken)
+        private movementService: MovementValidatorServiceInterface
     ) {}
     
     @Post('validation')
-    private async create(
+    /**
+     * name
+     */
+    public name() {
+        
+    } async validate(
         @Body() movementValidationRequest: ValidationDto,
         @Res() res: Response
     ): Promise<void> {

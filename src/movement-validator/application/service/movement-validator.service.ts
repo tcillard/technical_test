@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common"
 import { Balance, Movement, Reason } from "src/movement-validator/domain/models/movement-validation.model"
-import { MovementServiceInterface } from "src/movement-validator/domain/service/movement-validator.service.Interface"
+import { MovementValidatorServiceInterface } from "src/movement-validator/domain/service/movement-validator.service.Interface"
 
 @Injectable()
-export class MovementServiceImpl implements MovementServiceInterface {
+export class MovementValidatorServiceImpl implements MovementValidatorServiceInterface {
 
     private isDeepEqual(movementToCheck: Movement, movement: Movement): boolean {
         if (movementToCheck.date.valueOf() === movement.date.valueOf()
