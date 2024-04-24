@@ -88,7 +88,7 @@ export class MovementValidatorServiceImpl implements MovementValidatorServiceInt
                 {
                     type: 'movement',
                     description: `bad sum of movement between ${balances[index - 1].date.toISOString()} and ${balances[index].date.toISOString()}`
-                                    + `expected: ${total}, real: ${balances[index].balance}`,
+                                    + ` expected: ${total}, real: ${balances[index].balance}`,
                     objectInError: movementsBetweenBalances
                 })
                 }

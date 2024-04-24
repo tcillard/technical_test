@@ -117,6 +117,10 @@ I make the sum of all movement'amount and add the balance of the first and compa
 
 If the sum of all movement'amount and the balance of the second balancies are not equal, i will considere the movements are not complete.
 
+I havent implement test, i only use test.json at the root dir.
+I play with data and send it by bruno to test my application.
+
+
 # Conclusion
 
 The algorithm works but we can improve this solution with a database.\

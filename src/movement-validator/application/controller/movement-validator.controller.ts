@@ -13,12 +13,7 @@ export class MovementController {
     ) {}
     
     @Post('validation')
-    /**
-     * name
-     */
-    public name() {
-        
-    } async validate(
+    async validate(
         @Body() movementValidationRequest: ValidationDto,
         @Res() res: Response
     ): Promise<void> {
