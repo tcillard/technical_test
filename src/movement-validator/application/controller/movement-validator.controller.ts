@@ -1,5 +1,5 @@
 import { Body, Controller, Inject, Post, Res } from "@nestjs/common"
-import { MovementServiceInterface, MovementServiceToken } from "src/movement-validator/domain/service/movement.service.Interface"
+import { MovementServiceInterface, MovementServiceToken } from "src/movement-validator/domain/service/movement-validator.service.Interface"
 import { ValidationDto, ValidationError, ValidationSuccess } from "src/movement-validator/adapter/controller/movement-validation.dto"
 import { Response } from 'express'
 import { Reason } from "src/movement-validator/domain/models/movement-validation.model"

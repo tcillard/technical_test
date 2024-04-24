@@ -31,7 +31,7 @@ export type BalanceReason = {
 export type MovementReason = {
     type: "movement"
     description: string
-    gap: number
+    objectInError: Array<Movement>
 }
 
 export type Reason =  BalanceReason | MovementReason

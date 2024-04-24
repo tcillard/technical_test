@@ -1,13 +1,12 @@
 import { Injectable } from "@nestjs/common"
 import { Balance, Movement, Reason } from "src/movement-validator/domain/models/movement-validation.model"
-import { MovementServiceInterface } from "src/movement-validator/domain/service/movement.service.Interface"
+import { MovementServiceInterface } from "src/movement-validator/domain/service/movement-validator.service.Interface"
 
 @Injectable()
 export class MovementServiceImpl implements MovementServiceInterface {
 
     private isDeepEqual(movementToCheck: Movement, movement: Movement): boolean {
-        if (movementToCheck.date === movement.date
-                && movementToCheck.amount === movement.amount
+        if (movementToCheck.date.valueOf() === movement.date.valueOf()
                 && movementToCheck.label === movement.label) {
             return true
         }
@@ -68,11 +67,32 @@ export class MovementServiceImpl implements MovementServiceInterface {
         return reasons
     }
 
+    private someOfMovements(movements: Array<Movement>): number {
+        let total: number = 0
+        for (const movement of movements) {
+            total += movement.amount
+        }
+        return total
+    }
+
     private checkSumOfMovements(movements: Array<Movement>, balances: Array<Balance>): Array<Reason> {
         const reasons: Array<Reason> = []
-        const lastBalance: Balance = balances[0]
-        
-        
+        for (let index = 1; index < balances.length; index++) {
+            const movementsBetweenBalances = movements.filter((movement) => {
+                return movement.date.valueOf() > balances[index - 1].date.valueOf()
+                    && movement.date.valueOf() <= balances[index].date.valueOf()
+            })
+            const total = this.someOfMovements(movementsBetweenBalances) + balances[index - 1].balance
+            if (total != balances[index].balance) {
+                reasons.push(
+                {
+                    type: 'movement',
+                    description: `bad sum of movement between ${balances[index - 1].date.toISOString()} and ${balances[index].date.toISOString()}`
+                                    + `expected: ${total}, real: ${balances[index].balance}`,
+                    objectInError: movementsBetweenBalances
+                })
+                }
+            }
         return reasons
     }
 

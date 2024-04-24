@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common'
 import { AppService } from './app.service'
-import { MovementModule } from './movement-validator/movement.module'
+import { MovementValidatorModule } from './movement-validator/movement-validator.module'
 import 'dotenv/config'
 
 @Module({
   imports: [
-    MovementModule,
+    MovementValidatorModule,
   ],
   providers: [AppService],
   
